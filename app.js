@@ -7,14 +7,16 @@ const { urlencoded } = require('body-parser');
 dbConnect();
 app.set('view engine', 'ejs');
 const indexRoutes = require('./routes/indexRoutes');
-const cookieParser= require('cookie-parser');
+const movieRoutes = require('./routes/movieRoutes');
+const cookieParser = require('cookie-parser');
 
 app.use(cookieParser());
 app.use(express.static('public'));
 app.use(express.json());
 app.use(urlencoded({ extended: true }));
 app.use('/', userRoutes);
-app.use('/', indexRoutes)
+app.use('/', indexRoutes);
+app.use('/', movieRoutes);
 
 
 // Home route
