@@ -17,8 +17,8 @@
             <ul class="hidden md:flex space-x-6">
                 <li><a href="/movies" class="text-gray-300 hover:text-indigo-400 font-medium">Movies</a></li>
                 <li><a href="/bookings" class="text-gray-300 hover:text-indigo-400 font-medium">My Bookings</a></li>
-                <li><a href="/login" class="text-gray-300 hover:text-indigo-400 font-medium">Login</a></li>
-                <li><a href="/register" class="text-gray-300 hover:text-indigo-400 font-medium">Register</a></li>
+                <li><a href="/user" class="text-gray-300 hover:text-indigo-400 font-medium">User</a></li>
+                <li><a href="/logout" class="text-gray-300 hover:text-indigo-400 font-medium">Logout</a></li>
             </ul>
             <button id="menu-toggle" class="block md:hidden text-gray-300 focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -55,50 +55,37 @@
         </div>
     </section>
 
-    <!-- Movie Cards Section -->
-    <section id="movies" class="py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-2xl font-semibold text-gray-100 mb-8 text-center">Available Movies</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Movie Card 1 -->
+ <!-- Movie Cards Section -->
+<section id="movies" class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-semibold text-gray-100 mb-8 text-center">Available Movies</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <% movies.forEach(movie => { %>
                 <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden">
-                    <img src="https://via.placeholder.com/300x200" alt="Movie Poster" class="w-full h-48 object-cover">
+                    <img src="<%= movie.posterUrl %>" alt="<%= movie.title %> Poster" 
+                        class="w-full h-48 object-cover">
                     <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-100">Inception</h3>
-                        <p class="text-gray-400 text-sm mt-2">A mind-bending thriller by Christopher Nolan.</p>
+                        <h3 class="text-lg font-semibold text-gray-100"><%= movie.title %></h3>
+                        <p class="text-gray-400 text-sm mt-2">
+                            <% if (Array.isArray(movie.genre)) { %>
+                                <%= movie.genre.join(', ') %>
+                            <% } else { %>
+                                <%= movie.genre %>
+                            <% } %>
+                        </p>
+                        <p class="text-gray-400 text-sm mt-1"><span class="font-medium">Language:</span> <%= movie.language %></p>
+                        <p class="text-gray-400 text-sm mt-1"><span class="font-medium">Duration:</span> <%= movie.duration %> mins</p>
                         <button
                             class="mt-4 bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg text-sm font-medium">
                             Book Now
                         </button>
                     </div>
                 </div>
-                <!-- Movie Card 2 -->
-                <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden">
-                    <img src="https://via.placeholder.com/300x200" alt="Movie Poster" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-100">The Dark Knight</h3>
-                        <p class="text-gray-400 text-sm mt-2">The ultimate battle of good vs. evil in Gotham City.</p>
-                        <button
-                            class="mt-4 bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg text-sm font-medium">
-                            Book Now
-                        </button>
-                    </div>
-                </div>
-                <!-- Movie Card 3 -->
-                <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden">
-                    <img src="https://via.placeholder.com/300x200" alt="Movie Poster" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-100">Avatar: The Way of Water</h3>
-                        <p class="text-gray-400 text-sm mt-2">Experience the mesmerizing world of Pandora.</p>
-                        <button
-                            class="mt-4 bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg text-sm font-medium">
-                            Book Now
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <% }) %>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-gray-400 py-6">
