@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - CineBook</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gray-900 text-gray-200 font-sans">
+    <!-- Navbar -->
+    <header class="bg-gradient-to-r from-gray-800 to-gray-900 shadow-lg">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+            <a href="/" class="text-2xl font-bold text-indigo-400">CineBook</a>
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="/movies" class="text-gray-300 hover:text-indigo-400 font-medium">Movies</a></li>
+                <li><a href="/bookings" class="text-gray-300 hover:text-indigo-400 font-medium">My Bookings</a></li>
+                <li><a href="/login" class="text-gray-300 hover:text-indigo-400 font-medium">Login</a></li>
+                <li><a href="/register" class="text-gray-300 hover:text-indigo-400 font-medium">Register</a></li>
+            </ul>
+            <button id="menu-toggle" class="block md:hidden text-gray-300 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <ul id="mobile-menu" class="hidden md:hidden bg-gray-800 shadow-lg">
+            <li><a href="/movies" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">Movies</a></li>
+            <li><a href="/bookings" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">My Bookings</a></li>
+            <li><a href="/login" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">Login</a></li>
+            <li><a href="/register" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">Register</a></li>
+        </ul>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-indigo-800 to-purple-600 text-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+            <h1 class="text-4xl font-bold">Discover & Book Your Favorite Movies</h1>
+            <p class="mt-4 text-lg text-gray-300">Explore the latest releases, check showtimes, and secure your tickets
+                all in one place.</p>
+            <div class="mt-6">
+                <a href="/movies"
+                    class="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-lg shadow-md font-medium">Browse
+                    Movies</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <main class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-semibold text-gray-100 mb-8 text-center">Why Choose CineBook?</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-gray-800 rounded-lg shadow-md p-6 text-center">
+                    <div class="mb-4">
+                        <svg class="w-12 h-12 mx-auto text-indigo-400" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9.75 3v2m4.5-2v2m-9 3.25h13.5M9.75 21h4.5m-2.25-8.5v5m0-5a2.25 2.25 0 10-4.5 0m4.5 0a2.25 2.25 0 114.5 0m-4.5 0a2.25 2.25 0 10-4.5 0">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-100">Easy Booking</h3>
+                    <p class="text-gray-400 mt-2">Quick and hassle-free ticket booking experience.</p>
+                </div>
+                <div class="bg-gray-800 rounded-lg shadow-md p-6 text-center">
+                    <div class="mb-4">
+                        <svg class="w-12 h-12 mx-auto text-indigo-400" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 10h11M9 21H5m2.5-7H9M7.5 7.5H5m2.5 2.5H9m0-2.5h5.5"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-100">Showtime Updates</h3>
+                    <p class="text-gray-400 mt-2">Stay updated with the latest movie schedules.</p>
+                </div>
+                <div class="bg-gray-800 rounded-lg shadow-md p-6 text-center">
+                    <div class="mb-4">
+                        <svg class="w-12 h-12 mx-auto text-indigo-400" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M11 6a1 1 0 112 0v1a1 1 0 11-2 0v-1z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-100">Multiple Locations</h3>
+                    <p class="text-gray-400 mt-2">Find cinemas near you with our location-based search.</p>
+                </div>
+                <div class="bg-gray-800 rounded-lg shadow-md p-6 text-center">
+                    <div class="mb-4">
+                        <svg class="w-12 h-12 mx-auto text-indigo-400" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 19V5h3m6 5.5H9m-3 0a1 1 0 100-2m0 4h7m0 2a1 1 0 100-2"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-100">Seamless Payments</h3>
+                    <p class="text-gray-400 mt-2">Secure and fast payment options for all users.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-400 py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+            <p class="text-sm">&copy; 2024 CineBook. All Rights Reserved.</p>
+            <p class="text-sm">Made with ❤️ by Movie Enthusiasts</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', () => {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+
+</html>
