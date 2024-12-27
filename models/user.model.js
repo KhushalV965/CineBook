@@ -28,13 +28,19 @@ const userSchema = new mongoose.Schema(
             unique: true,
             match: [/^[6-9]\d{9}$/, 'Please use a valid Phone number']
         },
+        bookings: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Booking', // Reference to BookingModel
+            },
+        ],
         createdAt: {
             type: Date,
             default: Date.now,
         },
     },
     {
-        timestamps: true,  // Automatically adds createdAt and updatedAt fields
+        timestamps: true, // Automatically adds createdAt and updatedAt fields
     }
 );
 
