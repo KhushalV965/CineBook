@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getAllMovies, listMovie, getMovieById, deleteMovieById } = require('../controllers/movieController')
+const { getAllMovies, listMovie, getMovieById, deleteMovieById, updateMovieById } = require('../controllers/movieController')
 
 
 // Get all movies
@@ -11,6 +11,8 @@ router.post('/api/v1/movie', listMovie);
 router.get('/api/v1/movie/:id', getMovieById);
 // delete movie 
 router.delete('/api/v1/movie/:id',deleteMovieById);
+// update movie by id
+router.put('/api/v1/movie/:id',updateMovieById);
 
 
 
