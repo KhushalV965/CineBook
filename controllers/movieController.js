@@ -88,4 +88,24 @@ exports.deleteMovieById = async (req, res) => {
     }
 }
 
+// update movie
+exports.updateMovieById = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const updatedMovie = await movieModel.findByIdAndUpdate(id, updates, { new: true, runValidators: true });
+        // If movie not found
+        if (!updatedMovie) {
+            return res.status(404).json({ success: false, message: 'Movie not found' });
+        }
+        // Respond with updated movie
+        return res.status(200).json({ success: true, data: updatedMovie });
+
+
+    } catch (error) {
+        console.error(`Error updating movie with ID: ${id}`, error);
+        return res.status(500).json({ success: false, message: 'Failed to update movie' });
+    }
+}
+
 
