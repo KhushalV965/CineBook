@@ -91,6 +91,7 @@ exports.deleteMovieById = async (req, res) => {
 // update movie
 exports.updateMovieById = async (req, res) => {
     const { id } = req.params;
+    const updates = req.body;
 
     try {
         const updatedMovie = await movieModel.findByIdAndUpdate(id, updates, { new: true, runValidators: true });
