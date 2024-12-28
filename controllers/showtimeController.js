@@ -5,7 +5,7 @@ exports.createShowtime = async (req, res) => {
     try {
         const { movie, theater, date, time, totalSeats, price } = req.body;
 
-        const showtime =await showtimeModel.create({ movie, theater, date, time, totalSeats, availableSeats: totalSeats, price });
+        const showtime = await showtimeModel.create({ movie, theater, date, time, totalSeats, availableSeats: totalSeats, price });
         showtime.save();
 
         res.status(201).json({ message: 'Showtime created successfully', showtime });
