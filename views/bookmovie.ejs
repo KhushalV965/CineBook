@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking Confirmation</title>
+    <title>Book Movie</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-900 text-gray-200 font-sans">
@@ -21,11 +21,12 @@
         </nav>
     </header>
 
-    <!-- Booking Confirmation Section -->
+    <!-- Booking Form Section -->
     <section class="py-12 px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto bg-gray-800 p-8 rounded-lg shadow-lg">
-            <h1 class="text-2xl font-semibold text-gray-100 mb-6">Booking Confirmation</h1>
+            <h1 class="text-2xl font-semibold text-gray-100 mb-6">Book Your Movie</h1>
 
+            <!-- Movie Details -->
             <div class="text-gray-200 mb-6">
                 <h2 class="text-lg font-semibold text-indigo-400">Movie: <%= movie.title %></h2>
                 <p><strong>Language:</strong> <%= movie.language %></p>
@@ -37,16 +38,49 @@
                         <%= movie.genre %>
                     <% } %>
                 </p>
-                <p><strong>Showtime:</strong> <%= booking.showtime %></p>
-                <p><strong>Seats:</strong> <%= booking.seats %></p>
-                <p><strong>Your Name:</strong> <%= booking.userDetails.name %></p>
-                <p><strong>Your Email:</strong> <%= booking.userDetails.email %></p>
-                <p><strong>Your Phone:</strong> <%= booking.userDetails.phone %></p>
             </div>
 
-            <div class="text-center">
-                <a href="/movies" class="bg-indigo-600 hover:bg-indigo-500 text-white py-2 px-4 rounded-lg">Back to Movies</a>
-            </div>
+            <!-- Booking Form -->
+            <form action="/bookings" method="POST" class="space-y-4">
+                <input type="hidden" name="movieId" value="<%= movie._id %>">
+
+                <!-- Showtime Selection -->
+                <div>
+                    <label for="showtime" class="block text-sm font-medium text-gray-400">Select Showtime:</label>
+                    <select name="showtime" id="showtime" required class="mt-1 block w-full bg-gray-700 border-gray-600 text-gray-200 rounded-lg">
+                        <% movie.showtimes.forEach(showtime => { %>
+                            <option value="<%= showtime %>"><%= showtime %></option>
+                        <% }); %>
+                    </select>
+                </div>
+
+                <!-- Seat Selection -->
+                <div>
+                    <label for="seats" class="block text-sm font-medium text-gray-400">Number of Seats:</label>
+                    <input type="number" name="seats" id="seats" min="1" max="10" required class="mt-1 block w-full bg-gray-700 border-gray-600 text-gray-200 rounded-lg">
+                </div>
+
+                <!-- User Details -->
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-400">Your Name:</label>
+                    <input type="text" name="name" id="name" required class="mt-1 block w-full bg-gray-700 border-gray-600 text-gray-200 rounded-lg">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-400">Your Email:</label>
+                    <input type="email" name="email" id="email" required class="mt-1 block w-full bg-gray-700 border-gray-600 text-gray-200 rounded-lg">
+                </div>
+                <div>
+                    <label for="phone" class="block text-sm font-medium text-gray-400">Your Phone:</label>
+                    <input type="tel" name="phone" id="phone" required class="mt-1 block w-full bg-gray-700 border-gray-600 text-gray-200 rounded-lg">
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <button type="submit" class="bg-indigo-600 hover:bg-indigo-500 text-white py-2 px-4 rounded-lg">
+                        Confirm Booking
+                    </button>
+                </div>
+            </form>
         </div>
     </section>
 
