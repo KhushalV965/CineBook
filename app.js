@@ -20,6 +20,7 @@ app.use('/', userRoutes);
 app.use('/', indexRoutes);
 app.use('/', movieRoutes);
 app.use('/', bookingRoutes);
+app.use('/', showtimeRoutes);
 
 
 
