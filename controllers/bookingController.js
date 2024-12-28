@@ -1,4 +1,5 @@
-const showtimeModel = require('../models/showtime.model'); // Import your Showtime model
+const showtimeModel = require('../models/showtime.model'); 
+const movieModel = require('../models/movie.model'); 
 
 exports.renderBookMoviePage = async (req, res) => {
     const { id } = req.params;
