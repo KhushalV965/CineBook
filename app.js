@@ -9,6 +9,7 @@ app.set('view engine', 'ejs');
 const indexRoutes = require('./routes/indexRoutes');
 const movieRoutes = require('./routes/movieRoutes');
 const bookingRoutes = require('./routes/bookingRoutes');
+const showtimeRoutes = require('./routes/showtimeRoutes');
 const cookieParser = require('cookie-parser');
 
 app.use(cookieParser());
