@@ -8,6 +8,7 @@ dbConnect();
 app.set('view engine', 'ejs');
 const indexRoutes = require('./routes/indexRoutes');
 const movieRoutes = require('./routes/movieRoutes');
+const bookingRoutes = require('./routes/bookingRoutes');
 const cookieParser = require('cookie-parser');
 
 app.use(cookieParser());
@@ -17,6 +18,8 @@ app.use(urlencoded({ extended: true }));
 app.use('/', userRoutes);
 app.use('/', indexRoutes);
 app.use('/', movieRoutes);
+app.use('/', bookingRoutes);
+
 
 
 // Home route
