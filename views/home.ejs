@@ -75,10 +75,11 @@
                         </p>
                         <p class="text-gray-400 text-sm mt-1"><span class="font-medium">Language:</span> <%= movie.language %></p>
                         <p class="text-gray-400 text-sm mt-1"><span class="font-medium">Duration:</span> <%= movie.duration %> mins</p>
-                        <button
-                            class="mt-4 bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg text-sm font-medium">
+                        <a href="/movies/<%= movie._id %>/book"
+                            class="mt-4 bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg text-sm font-medium text-center block">
                             Book Now
-                        </button>
+                        </a>
+                        
                     </div>
                 </div>
             <% }) %>
