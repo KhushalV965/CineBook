@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-gray-200 font-sans">
+
+    <!-- Navbar -->
+    <header class="bg-gradient-to-r from-gray-800 to-gray-900 shadow-lg">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+            <a href="/" class="text-2xl font-bold text-indigo-400">CineBook</a>
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="/movies" class="text-gray-300 hover:text-indigo-400 font-medium">Movies</a></li>
+                <li><a href="/bookings" class="text-gray-300 hover:text-indigo-400 font-medium">My Bookings</a></li>
+                <li><a href="/user" class="text-gray-300 hover:text-indigo-400 font-medium">User</a></li>
+                <li><a href="/logout" class="text-gray-300 hover:text-indigo-400 font-medium">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Booking Confirmation Section -->
+    <section class="py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto bg-gray-800 p-8 rounded-lg shadow-lg">
+            <h1 class="text-2xl font-semibold text-gray-100 mb-6">Booking Confirmation</h1>
+
+            <div class="text-gray-200 mb-6">
+                <h2 class="text-lg font-semibold text-indigo-400">Movie: <%= movie.title %></h2>
+                <p><strong>Language:</strong> <%= movie.language %></p>
+                <p><strong>Duration:</strong> <%= movie.duration %> minutes</p>
+                <p><strong>Genre:</strong> 
+                    <% if (Array.isArray(movie.genre)) { %>
+                        <%= movie.genre.join(', ') %>
+                    <% } else { %>
+                        <%= movie.genre %>
+                    <% } %>
+                </p>
+                <p><strong>Showtime:</strong> <%= booking.showtime %></p>
+                <p><strong>Seats:</strong> <%= booking.seats %></p>
+                <p><strong>Your Name:</strong> <%= booking.userDetails.name %></p>
+                <p><strong>Your Email:</strong> <%= booking.userDetails.email %></p>
+                <p><strong>Your Phone:</strong> <%= booking.userDetails.phone %></p>
+            </div>
+
+            <div class="text-center">
+                <a href="/movies" class="bg-indigo-600 hover:bg-indigo-500 text-white py-2 px-4 rounded-lg">Back to Movies</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-400 py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+            <p class="text-sm">&copy; 2024 CineBook. All Rights Reserved.</p>
+            <p class="text-sm">Made with ❤️ by Movie Enthusiasts</p>
+        </div>
+    </footer>
+
+</body>
+</html>
