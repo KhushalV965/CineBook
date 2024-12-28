@@ -17,7 +17,7 @@ exports.renderBookMoviePage = async (req, res) => {
 
 
 
-exports.bookings= async (req, res) => {
+exports.bookings = async (req, res) => {
     const { movieId, showtime, seats, name, email, phone } = req.body;
 
     try {
@@ -25,7 +25,7 @@ exports.bookings= async (req, res) => {
         const movie = await movieModel.findById(movieId);
 
         // Create a new booking object
-        const booking = new Booking({
+        const booking = await bookingModel.create({
             movieId,
             showtime,
             seats,
