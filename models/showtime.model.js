@@ -6,10 +6,6 @@ const showtimeSchema = new mongoose.Schema({
         ref: 'Movie',
         required: true,
     },
-    cinema: {
-        type: String,
-        required: true, // Cinema or theater name
-    },
     date: {
         type: Date,
         required: true,
