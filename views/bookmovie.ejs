@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-gradient-to-br from-gray-900 to-gray-800 text-gray-200 font-sans">
+<body class="bg-gray-900 font-sans text-gray-200">
 
     <!-- Navbar -->
     <header class="bg-gradient-to-r from-purple-800 to-indigo-600 shadow-lg sticky top-0 z-10">
@@ -23,17 +23,30 @@
         </nav>
     </header>
 
+    <!-- Banner Image (Movie Poster) -->
+    <section class="relative w-full h-96 bg-cover bg-center" style="background-image: url('<%= movie.poster %>');">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="relative z-10 flex items-center justify-center w-full h-full text-center text-white">
+            <h1 class="text-4xl font-bold">CineBook</h1>
+        </div>
+    </section>
+
     <!-- Booking Form Section -->
     <section class="py-12 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl mx-auto bg-gray-800 p-8 rounded-xl shadow-xl">
-            <h1 class="text-3xl font-bold text-indigo-400 mb-8 text-center">Book Your Show</h1>
+        <div class="max-w-3xl mx-auto bg-gray-800 p-8 rounded-xl shadow-xl space-y-6">
+            <h2 class="text-3xl font-bold text-indigo-400 mb-8 text-center">Book Your Show</h2>
 
             <!-- Movie Details -->
             <div class="mb-6">
-                <h2 class="text-2xl font-semibold text-white mb-2">Movie: <%= movie.title %></h2>
-                <p class="text-sm"><strong>Language:</strong> <%= movie.language %></p>
-                <p class="text-sm"><strong>Duration:</strong> <%= movie.duration %> minutes</p>
-                <p class="text-sm"><strong>Genre:</strong> 
+                <h3 class="text-2xl font-semibold text-white mb-2">Movie: <%= movie.title %>
+                </h3>
+                <p class="text-sm"><strong>Language:</strong>
+                    <%= movie.language %>
+                </p>
+                <p class="text-sm"><strong>Duration:</strong>
+                    <%= movie.duration %> minutes
+                </p>
+                <p class="text-sm"><strong>Genre:</strong>
                     <% if (Array.isArray(movie.genre)) { %>
                         <%= movie.genre.join(', ') %>
                     <% } else { %>
@@ -49,7 +62,7 @@
                 <!-- Showtime Selection -->
                 <div>
                     <label for="showtime" class="block text-sm font-medium text-gray-400">Select Showtime:</label>
-                    <select name="showtime" id="showtime" required class="mt-1 block w-full bg-gray-700 border-gray-600 text-gray-200 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                    <select name="showtime" id="showtime" required class="mt-1 block w-full bg-gray-700 border-gray-600 text-gray-200 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 py-3 px-4">
                         <% if (showtimes && showtimes.length > 0) { %>
                             <% showtimes.forEach(showtime => { %>
                                 <option value="<%= showtime._id %>"><%= showtime.date.toDateString() %>, <%= showtime.time %></option>
@@ -63,27 +76,27 @@
                 <!-- Seat Selection -->
                 <div>
                     <label for="seats" class="block text-sm font-medium text-gray-400">Number of Seats:</label>
-                    <input type="number" name="seats" id="seats" min="1" max="10" required class="mt-1 block w-full bg-gray-700 border-gray-600 text-gray-200 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                    <input type="number" name="seats" id="seats" min="1" max="10" required class="mt-1 block w-full bg-gray-700 border-gray-600 text-gray-200 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 py-3 px-4">
                 </div>
 
                 <!-- User Details -->
                 <div>
                     <label for="name" class="block text-sm font-medium text-gray-400">Your Name:</label>
-                    <input type="text" name="name" id="name" required class="mt-1 block w-full bg-gray-700 border-gray-600 text-gray-200 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                    <input type="text" name="name" id="name" required class="mt-1 block w-full bg-gray-700 border-gray-600 text-gray-200 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 py-3 px-4">
                 </div>
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-400">Your Email:</label>
-                    <input type="email" name="email" id="email" required class="mt-1 block w-full bg-gray-700 border-gray-600 text-gray-200 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                    <input type="email" name="email" id="email" required class="mt-1 block w-full bg-gray-700 border-gray-600 text-gray-200 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 py-3 px-4">
                 </div>
                 <div>
                     <label for="phone" class="block text-sm font-medium text-gray-400">Your Phone:</label>
-                    <input type="tel" name="phone" id="phone" required class="mt-1 block w-full bg-gray-700 border-gray-600 text-gray-200 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                    <input type="tel" name="phone" id="phone" required class="mt-1 block w-full bg-gray-700 border-gray-600 text-gray-200 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 py-3 px-4">
                 </div>
 
                 <!-- Submit Button -->
                 <div class="text-center">
                     <button type="submit" class="w-full py-3 px-6 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-lg font-bold text-lg shadow-md transform hover:scale-105 transition-transform duration-200">
-                        Confirm Booking
+                        Proceed To Payment
                     </button>
                 </div>
             </form>
