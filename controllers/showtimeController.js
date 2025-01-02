@@ -13,3 +13,20 @@ exports.createShowtime = async (req, res) => {
         res.status(500).json({ error: 'Failed to create showtime', details: error.message });
     }
 };
+exports.getShowtimes = async (req, res) => {
+    try {
+        const showTimes = await showtimeModel.findOne();
+        res.status(201).json({ message: 'Show Times fetched successfully', showTimes });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to create showtime', details: error.message });
+    }
+};
+exports.getShowtime = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const showTimes = await showtimeModel.findById(id);
+        res.status(201).json({ message: 'Show Time fetched successfully', showTimes });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to create showtime', details: error.message });
+    }
+}; 
