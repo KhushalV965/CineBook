@@ -1,9 +1,11 @@
 const express = require('express');
-const { createShowtime } = require('../controllers/showtimeController');
+const { createShowtime, getShowtimes, getShowtime } = require('../controllers/showtimeController');
 const router = express.Router();
 
 
-router.post('/api/v1/showtimes',createShowtime);
+router.post('/api/v1/showtimes', createShowtime);
+router.get('/api/v1/getallshowtimes', getShowtimes);
+router.get('/api/v1/getshowtime/:id', getShowtime);
 
 
 
