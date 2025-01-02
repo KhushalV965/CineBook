@@ -1,12 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const Razorpay = require('razorpay');
+const {RenderProceedToPaymentPage}= require('../controllers/paymentController')
 
 
 const razorpay = new Razorpay({
     key_id: process.env.RAZORPAY_KEY_ID,
     key_secret: process.env.RAZORPAY_KEY_SECRET,
 });
+
+router.get('/proceedtopayment', RenderProceedToPaymentPage);
 
 router.post('/create/orderId', async (req, res) => {
     const options = {

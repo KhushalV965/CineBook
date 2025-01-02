@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proceed to Payment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-900 text-white min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-purple-800 to-indigo-600 shadow-lg sticky top-0 z-10">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+            <a href="/" class="text-3xl font-extrabold text-white tracking-wide">CineBook</a>
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="/api/v1/movies" class="text-gray-300 hover:text-white font-medium">Movies</a></li>
+                <li><a href="/bookings" class="text-gray-300 hover:text-white font-medium">My Bookings</a></li>
+                <li><a href="/user" class="text-gray-300 hover:text-white font-medium">User</a></li>
+                <li><a href="/logout" class="text-gray-300 hover:text-white font-medium">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Movie Banner -->
+    <section class="relative w-full h-96 bg-cover bg-center" style="background-image: url('<%= movie.posterUrl %>');">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="relative z-10 flex items-center justify-center w-full h-full text-center text-white">
+            <h1 class="text-4xl font-bold">
+                <%= movie.title %>
+            </h1>
+        </div>
+    </section>
+
+    <!-- Payment Section -->
+    <main class="max-w-7xl mx-auto my-6 p-6 flex flex-col gap-10">
+        <section class="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h2 class="text-2xl font-bold mb-4">Payment Summary</h2>
+            <div class="text-sm">
+                <p><strong>Movie:</strong>
+                    <%= movie.title %>
+                </p>
+                <p><strong>Showtime:</strong>
+                    <%= showtime.date %>, <%= showtime.time %>
+                </p>
+                <p><strong>Selected Seats:</strong>
+                    <%= selectedSeats.join(', ') %></p>
+                <p><strong>Total Price:</strong> ₹<%= selectedSeats.length * 200 %></p>
+            </div>
+        </section>
+
+        <!-- Payment Options -->
+        <section class="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h3 class="text-xl font-semibold mb-4">Payment Options</h3>
+            <form action="/confirm-payment" method="POST">
+                <input type="hidden" name="movieId" value="<%= movie.id %>">
+                <input type="hidden" name="seats" value="<%= selectedSeats.join(' ,') %>">
+                        <input type="hidden" name="totalAmount" value="<%= selectedSeats.length * 200 %>">
+                        <button type="submit"
+                            class="w-full bg-green-600 hover:bg-green-800 text-white py-3 px-6 rounded-md font-bold">
+                            Confirm and Pay ₹<%= selectedSeats.length * 200 %>
+                        </button>
+                        </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 p-4">
+        <p class="text-center text-sm">&copy; 2024 CineBook</p>
+    </footer>
+</body>
+
+</html>
